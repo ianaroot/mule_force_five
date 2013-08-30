@@ -12,17 +12,26 @@ end
 
 get '/:user_id' do
 
-  erb :user_home_page
+  erb :user_home_deck_dashboard
 end
 
 post '/' do
-
-  redirect '/:user_id'
+  @user_email = params[:user][:email]
+  @user = User.find_by_email(@user_email)
+  p @user
+  # session[:user_id] = @user.id 
+  # redirect '/:user_id'
 end
 
 
 post '/new' do
-  erb :user_home_page
+  @user = User.create(params[:user])
+  session[:user]
+  # redirect '/home'
+end
+
+get '/:card_id' do
+
 end
 
 

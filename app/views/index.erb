@@ -6,14 +6,14 @@
     <tr>
       <td>
         <form action="/" method="post">
-          <p>username</p>
-          <input type="text" name="user[user_name]">
+          <h3>Email</h3>
+          <input type="text" name="user[email]">
      </td>    
     <tr> 
     <tr>
       <td>
-        <p>password</p>
-          <input type="text" name="user[password]">
+        <h3>Password</h3>
+          <input type="password" name="user[password_hash]">
           <input type="submit" value="login">
       </td>
     </tr>
@@ -24,7 +24,7 @@
           <br>
           <br>
           <br>
-            <form action="/new_user" name="not_sure">
+            <form action="/new" name="not_sure">
               <p> or sign up for an account if you are new to mule force</p>
               <input type="submit" value="signup">
 

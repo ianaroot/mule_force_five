@@ -5,16 +5,28 @@
   <table>
     <tr>
       <td>
-        <form action="/" method="post">
-          <p>username</p>
-          <input type="text" name="user[user_name]">
+        <form action="/new" method="post">
+          <h3>First Name</h3>
+          <input type="text" name="user[first_name]">
         </td>    
-        <tr> 
+        </tr> 
+        <tr>
+        <td>
+          <h3>Last Name</h3>
+          <input type="text" name="user[last_name]">
+          </td>
+        </tr>
+        <tr>
+        <td>
+          <h3>Email</h3>
+          <input type="text" name="user[email]">
+          </td>
+        </tr>
         <tr>
           <td>
-            <p>password</p>
-            <input type="text" name="user[password]">
-            <input type="submit" value="signup">
+            <h3>Password</h3>
+            <input type="password" name="user[password_hash]">
+            <input type="submit" value="SignUp">
           </td>
         </tr>
         </form>
