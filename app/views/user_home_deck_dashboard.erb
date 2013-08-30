@@ -1,0 +1,10 @@
+<div class="container">
+
+	<%= Deck.all.each do |deck|%>
+		<li>
+			<a href="/<%= deck.name %>"> <%= deck.name %> </a>
+		</li>
+	<%= end %>
+
+
+</div>
