@@ -3,8 +3,8 @@ class CreateRounds < ActiveRecord::Migration
     create_table :rounds do |t|
       t.integer :deck_id
       t.integer :user_id
-      t.integer :times_correct
-      t.integer :times_incorrect
+      t.integer :times_correct, default: 0
+      t.integer :times_incorrect, default: 0
       t.timestamps
     end
   end
