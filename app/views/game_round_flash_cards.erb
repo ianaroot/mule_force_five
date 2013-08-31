@@ -1,13 +1,9 @@
 <div class="container">
-	
-	<h3><%= @..... %></h3>
-	<br><br>
-	<h1><%= @..... %></h1>
-	<form action="/...url...." method="post">
-		<input type="submit" value="Back">
-		<input type="submit" value="Next">
-		<input type="submit" value="Exit Game">
-	</form>
-
-
+  <h1 class="question"> This is a question </h1>
+  <br/>
+  <br/>
+  <form action="/game/card/<%= @card.id %>" method="post">
+    <input type="text" placeholder="type your answer">
+    <input type="submit" value="Submit Answer!">
+  </form>
 </div>

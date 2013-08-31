@@ -7,6 +7,7 @@ end
 post '/login' do
   @user_email = params[:user][:email]
   @user = User.find_by_email(@user_email)
+  @deck = [Deck.find(1)]
   session[:user_id] = @user.id 
   erb :user_home_page
 end
