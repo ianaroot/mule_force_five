@@ -1,0 +1,11 @@
+
+
+<div class="container">
+  <h4>Welcome to your home page where all your decks reside</h4>
+  <h5>Hey! <%= @user.first_name %> select a deck!</h5>
+  <select name="user[deck]">
+      <% @decks.each do |deck| %>
+        <option value="#{deck.name}"><%= deck.name %></option>      
+      <% end %>
+  </select>
+</div>

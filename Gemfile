@@ -12,7 +12,7 @@ gem 'thin'
 
 gem 'activesupport'
 gem 'activerecord'
-gem 'csv'
+
 
 gem 'rake'
 
