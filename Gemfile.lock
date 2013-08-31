@@ -14,6 +14,7 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.2)
     backports (2.6.1)
+    bcrypt-ruby (3.1.2)
     builder (3.0.4)
     daemons (1.1.9)
     diff-lcs (1.1.3)
@@ -63,6 +64,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   activesupport
+  bcrypt-ruby
   faker
   pg
   rake
