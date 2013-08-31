@@ -1,8 +1,8 @@
-deck = Deck.create(name: "dutch_vocab")
+deck = Deck.create(name: "states_capitals")
 
-CSV.foreach("./public/nederlands.csv") do |row|
+CSV.foreach("./public/States.csv") do |row|
   term       = row.first
-  definition = row.last
+  definition = row[2]
   Card.create(term: term, definition: definition, deck_id: 1)
 end
 
