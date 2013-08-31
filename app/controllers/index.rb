@@ -4,7 +4,7 @@ get '/' do
 end
 
 
-post '/users' do
+post '/login' do
   @user_email = params[:user][:email]
   @user = User.find_by_email(@user_email)
   session[:user_id] = @user.id 
@@ -24,7 +24,7 @@ post '/users/new' do
 end
 
 
-get '/game/:card_id' do
+get '/game/card/:card_id' do
   # game home renders certain deck of cards
 end
 
