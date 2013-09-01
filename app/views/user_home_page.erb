@@ -2,10 +2,13 @@
 
 <div class="container">
   <h4>Welcome to your home page where all your decks reside</h4>
-  <h5>Hey! <%= @user.first_name %> select a deck!</h5>
+  <h5>Hey <%= @user.first_name.capitalize %>! Select a deck!</h5>
+  <form action="/game/card/new" method="post">
   <select name="user[deck]">
   <% @deck.each do |deck| %>
       <option><%= deck.name %></option>
   <% end %>
+  <input type="submit" value="select">
   </select>
+  </form>
 </div>
