@@ -20,7 +20,7 @@
   <br/>
   <% if @game_over == false%>
     <form action="/game/card/<%= @new_card_id %>" method="get">
-      <input type="submit" value="View next flashcard!">
+      <input type="submit" value="View next flashcard!" autofocus >
     </form>
   <% else %>
       <form action="/game/results" method="get">
