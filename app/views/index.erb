@@ -1,42 +1,30 @@
-<img src="muledeer_sm.png" width="220" id="muledeer_badge">
-<img src="muleforcefive.png" width="220" id="muledeer_slogan">
-
-<!-- <img src="muledeer_sm.png"> -->
+<img src="muledeer_sm.png" width="200" id="muledeer_badge">
+<img src="muleforcefive.png" width="200" id="muledeer_slogan">
 
 <div class="container">
   <img src="logo.png" width="240">
-  <p>Please login below</p>
 
-  <table>
-
-
-
-    <%= @errors %>
-     
-    <tr>
-      <td>
+  <div class="sign_in">
+    <div class="horizontal">
         <form action="/login" method="post">
-          <h3>Email</h3>
-          <input type="text" name="user[email]">
-     </td>    
-    <tr> 
-    <tr>
-      <td>
-        <h3>Password</h3>
-          <input type="password" name="user[password]">
-          <input type="submit" value="login">
-      </td>
-    </tr>
-      </form>
-        <tr>
-          <td>
-          <br>
-          <br>
-          <br>
-          <form action="users/new" name="not_sure">
-      <p> or sign up for an account if you are new to mule force</p>
-          <input type="submit" value="signup">
-        </td>
-      </tr>
-    </table>
-</div>
+          <!-- <h3>Email</h3> -->
+          <input type="text" name="user[email]" size=30 placeholder="Enter your email address" id="first_form">
+    </div>
+    <div class="horizontal">
+          <!-- <h3>Password</h3> -->
+          <input type="password" name="user[password]" size=30 placeholder="Enter password">
+    </div>
+
+  </div>
+  
+
+    <div class="horizontal">
+        <%= @errors %><br>
+        <input type="submit" value="Sign In" class="sign_in_button">
+          </form>
+        <form action="users/new" name="not_sure" class="sign_in_button">
+          <input type="submit" value="New User" >
+        </form>
+
+         
+    </div>

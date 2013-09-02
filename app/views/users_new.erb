@@ -1,6 +1,7 @@
  <div class="container">
-  <h1>Thanks for Coming to Checkout Mule Force Five Flash Cards</h1>
-  <p>Please sign up below</p>
+  <h1>Sign up for a new account</h1>
+  <div class="sign_up">
+
 
   <table>
     <% if @errors %>
@@ -17,29 +18,29 @@
     <tr>
       <td>
         <form action="/users/new" method="post">
-          <h3>First Name</h3>
-          <input type="text" name="user[first_name]">
+          <input type="text" name="user[first_name]" placeholder="First Name" id="first_form">
         </td>    
         </tr> 
         <tr>
         <td>
-          <h3>Last Name</h3>
-          <input type="text" name="user[last_name]">
+
+          <input type="text" name="user[last_name]" placeholder="Last Name">
           </td>
         </tr>
         <tr>
         <td>
-          <h3>Email</h3>
-          <input type="text" name="user[email]">
+          <input type="text" name="user[email]" placeholder="Your Email">
           </td>
         </tr>
         <tr>
           <td>
-            <h3>Password</h3>
-            <input type="password" name="user[password_hash]">
-            <input type="submit" value="SignUp">
+            <input type="password" name="user[password_hash]" placeholder="Password">
           </td>
         </tr>
-        </form>
   </table>
 </div>
+        <input type="submit" value="SignUp"><br><br>
+        </form>
+
+</div>
+

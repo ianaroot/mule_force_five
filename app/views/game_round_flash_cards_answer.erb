@@ -1,12 +1,21 @@
 <!-- Show Flash card answer -->
+<div class="navbar"></div>
+
 
 <div class="container">
-  <h1 class="question"> Here's the answer: <%= @card.term %></h1>
+<h1 class="question"><%= @card.definition %> </h1>
+
+
+<h1 class="question"> The answer is: <%= @card.term %></h1>
   <% if @guess.is_correct == true%>
     <p>You were correct</p>
     <% else %>
     <p>You were incorrect</p>
   <% end %>
+
+
+<div class="wrapper">
+
   <br/>
   <br/>
   <% if @game_over == false%>
@@ -19,6 +28,6 @@
       </form>
   <% end %>
 
-  <%= erb :logout_button  %>
+<div class="logout"><%= erb :logout_button %><div>
 
 </div>

@@ -1,15 +1,21 @@
 <!-- Show flashcard -->
+<div class="navbar"></div>
+
 
 <div class="container">
-  <h1 class="question"> Guess the answer: <%= @card.definition  %> </h1>
-  <br/>
-  <br/>
+<h1 class="question"><%= @card.definition %> </h1>
+
+<div class="wrapper">
+
   <form action="/game/card/<%= @card.id%>" method="post">
-  <input type="text" placeholder="type your answer" name ="input">
-    <input type="submit" value="Submit Answer!">
+  <input type="text" placeholder="Enter your answer" name ="input" id="answer">
+  <br>
+
+</div>
+  
+  <input type="submit" value="Submit">
   </form>
 
-  <%= erb :logout_button %>
-
+<div class="logout"><%= erb :logout_button %><div>
 
 </div>
