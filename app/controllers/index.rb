@@ -10,11 +10,16 @@ end
 
 post '/login' do
   check_already_logged_in
-  if verify_login_set_session_and_redirect_to_game_new
+  if User.find_by_email(params[:user][:email])
+    if login_successful
+      redirect '/game/new'
+    else
+      @errors = "Sorry, password does not match email"
+    end
   else
-    @errors = "Please enter a correct username and password."
-    erb :index
+    @errors = "Sorry, that email is not registered"
   end
+  erb :index
 end
 
 get '/users/new' do

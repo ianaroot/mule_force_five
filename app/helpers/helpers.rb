@@ -7,18 +7,14 @@ helpers do
     end
   end
 
+  def login_successful
+    user_id = User.login(params[:user])
+    session[:user_id] = user_id
+  end
+
   def check_already_logged_in
     if session[:user_id] != nil
       redirect "/game/new"
-    end
-  end
-
-  def verify_login_set_session_and_redirect_to_game_new
-    if @user = User.find_by_email(params[:user][:email])
-      session[:user_id] = @user.login(params[:user][:password], params[:user][:email])
-      redirect '/game/new'
-    else
-      false
     end
   end
 

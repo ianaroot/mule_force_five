@@ -12,17 +12,18 @@ class User < ActiveRecord::Base
     @password ||= Password.new(password_hash)
   end
 
-
   def password=(new_password)
     @password = Password.create(new_password)
     self.password_hash = @password
-  end
-
-  def login(password, email)
-    if self.password_hash == password
-      self.id
+  end 
+  
+  def self.login(params)
+    @user = User.find_by_email(params["email"])
+    if @user.password == params["password"]
+      @user.id
     else
       nil
     end
   end
+
 end
