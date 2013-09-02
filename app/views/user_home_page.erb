@@ -1,16 +1,24 @@
 
 
 <div class="container">
-  <h4>Welcome to your home page where all your decks reside</h4>
-  <h5>Hey <%= @user.first_name.capitalize %>! Select a deck!</h5>
+<h1>Deck Dashboard</h1>
+<h3>Hey <%= @user.first_name.capitalize %>! Select a deck!</h3>
+
+<div class="wrapper">
+
   <form action="/game/card/new" method="post">
   <select name="user[deck]">
+  
   <% @decks.each do |deck| %>
       <option><%= deck.name %></option>
   <% end %>
+
+  <br>
   <input type="submit" value="select">
   </select>
   </form>
 
-    <%= erb :logout_button %>
+  <div class="logout"><%= erb :logout_button %><div>
+
+</div>
 </div>
