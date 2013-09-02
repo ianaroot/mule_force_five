@@ -3,6 +3,17 @@
   <p>Please sign up below</p>
 
   <table>
+    <% if @errors %>
+      <% @errors.each do |error|  %>
+        <tr>
+          <td>
+        <%= error %>
+          </td>
+        </tr>
+      <% end  %>
+    <% end %>
+  
+
     <tr>
       <td>
         <form action="/users/new" method="post">

@@ -1,0 +1,32 @@
+<div class="container">
+	<h1>Congratulations! You've correctly guessed the answers to all your cards!</h1>
+
+  Here are your stats:
+  <table>
+    <tr>
+      <td>Number of Guesses:</td>
+      <td>
+        <h3><%= @times_correct + @times_incorrect %></h3>
+      </td>
+    </tr>
+    <tr>
+      <td>Number of Correct Guesses:</td>
+      <td>
+        <h3><%= @times_correct %></h3>
+      </td>
+    </tr>
+    <tr>
+      <td>Number of Incorrect Guesses:</td>
+      <td>
+        <h3><%= @times_incorrect %></h3>
+      </td>
+    </tr>
+  </table>
+
+  <form action="/game/new" method="post">
+    <input type="submit" value="Choose another deck">
+  </form>
+
+  <%= erb :logout_button %>
+  
+</div>

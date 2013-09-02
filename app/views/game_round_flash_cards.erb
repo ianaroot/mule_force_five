@@ -5,9 +5,11 @@
   <br/>
   <br/>
   <form action="/game/card/<%= @card.id%>" method="post">
-    <input type="text" placeholder="type your answer" name ="input">
+  <input type="text" placeholder="type your answer" name ="input">
     <input type="submit" value="Submit Answer!">
   </form>
-  
+
+  <%= erb :logout_button %>
+
 
 </div>

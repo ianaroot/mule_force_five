@@ -1,16 +1,24 @@
-<!-- Flash card answer -->
+<!-- Show Flash card answer -->
 
 <div class="container">
   <h1 class="question"> Here's the answer: <%= @card.term %></h1>
-  <% if @guess.is_correct == 't'%>
+  <% if @guess.is_correct == true%>
     <p>You were correct</p>
     <% else %>
     <p>You were incorrect</p>
   <% end %>
   <br/>
   <br/>
-  <form action="/game/card/#{new_card.id}" method="get">
-    <input type="submit" value="View next flashcard!">
-  </form>
+  <% if @game_over == false%>
+    <form action="/game/card/<%= @new_card_id %>" method="get">
+      <input type="submit" value="View next flashcard!">
+    </form>
+  <% else %>
+      <form action="/game/results" method="get">
+        <input type="submit" value="View next flashcard!">
+      </form>
+  <% end %>
+
+  <%= erb :logout_button  %>
 
 </div>

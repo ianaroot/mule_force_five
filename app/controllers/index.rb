@@ -4,31 +4,39 @@ get '/' do
 end
 
 
+post '/' do
+  session.clear  
+  erb :index
+end
+
+
 post '/login' do
-  @user_email = params[:user][:email]
-  @user = User.find_by_email(@user_email)
-  @deck = [Deck.find(1)]
-  session[:user_id] = @user.id 
-  if @user.login(params[:user][:password]).nil?
-    erb :index
+  if @user = User.find_by_email(params[:user][:email])
+    session[:user_id] = @user.login(params[:user][:password], params[:user][:email])
+    @decks = Deck.all
+    redirect '/game/new'
   else
-    erb :user_home_page
+    @errors = "Please enter a correct username and password."
+    erb :index
   end
 end
 
 
 get '/users/new' do
+
   erb :users_new
 end
 
-
 post '/users/new' do
-  @deck = [Deck.find(1)]
-  @user = User.create(params[:user], 
-    password_hash: BCrypt::Password.create(params[:user][:password]))
-  session[:user_id] = @user.id
-
-  erb :user_home_page
+  @decks = Deck.all
+  @user = User.create(params[:user], password_hash: params[:user][:password])
+  if @user.save
+    session[:user_id] = @user.id
+    redirect '/game/new'
+  else
+    @errors = @user.errors.full_messages
+    erb :users_new 
+  end
 end
 
 post '/game/card/new' do 
@@ -43,28 +51,11 @@ post '/game/card/new' do
   cards = Card.where(deck_id: deck.id)
   session[:card_ids] = []
   cards.each { |card| session[:card_ids] << card.id }
+  session[:card_ids].shuffle!
   card_id = session[:card_ids][rand(session[:card_ids].length)]
-  
+
   redirect "/game/card/#{card_id}"
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 get '/game/card/:card_id' do
   @card = Card.find(params[:card_id])
@@ -73,53 +64,58 @@ get '/game/card/:card_id' do
 end
 
 post '/game/card/:card_id' do
-  #compare input to answer
   @card = Card.find(params[:card_id])
   @guess = Guess.create(card_id: params[:card_id], round_id: session[:round_id], input: params[:input])
-  p @guess
-  # #create new guess object, with card id, round id, input, and is_correct
-  # #set up variable to display actual answer, and whether user was correct
-  
-  # # p @card
-  if @guess.input == Card.find_by_definition(@card.definition).term
-    @guess.is_correct = "t"
+  @round = Round.find(session[:round_id])
+
+  if @guess.input.downcase == Card.find_by_definition(@card.definition).term.downcase
+    @guess.is_correct = true
+    session[:card_ids].delete(@card.id)
+
+    @round.times_correct += 1
+    @round.save
+  else
+    @round.times_incorrect += 1
+    @round.save
   end
 
-  solved_cards = Guess.where(round_id: session[:round_id]).where(is_correct: "t")
-  # p solved_cards
+  @new_card_id = session[:card_ids][rand(session[:card_ids].length)]
 
-  solved_cards.each do |guess|
-    session[:card_ids] -= [guess.card_id]
+  if session[:card_ids].count == 0
+    @game_over = true 
+  else
+    @game_over = false
   end
-  
-  new_card = session[:card_ids][rand(session[:card_ids].length)]
-  # p new_card
 
 
-  
   erb :game_round_flash_cards_answer
 end
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 get '/game/results' do
-  # game results
+  @deck = Deck.where(round_id: session[:round_id])
+  @guesses = Guess.where(round_id: session[:round_id])
+  @times_correct = (Round.find(session[:round_id])).times_correct
+  @times_incorrect = (Round.find(session[:round_id])).times_incorrect
+  erb :user_game_results
+end
+
+get '/game/new' do
+
+  erb :user_home_page
 end
 
 
-
-
+# user_home_page.erb needs to render from a different route
+# and successful logins and signups need to redirect to that route
+# also, the choose another deck button in user_game_results.erb
+# need to redirect to that same route
+# 
+# every page needs to check whether the user has been logged in
+# 
+# every route needs to check the sessions for whether you're logged in
+# and if not, it needs to redirect to the index
+# using a partial or a helper
 
 
 

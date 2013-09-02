@@ -5,10 +5,12 @@
   <h5>Hey <%= @user.first_name.capitalize %>! Select a deck!</h5>
   <form action="/game/card/new" method="post">
   <select name="user[deck]">
-  <% @deck.each do |deck| %>
+  <% @decks.each do |deck| %>
       <option><%= deck.name %></option>
   <% end %>
   <input type="submit" value="select">
   </select>
   </form>
+
+    <%= erb :logout_button %>
 </div>
