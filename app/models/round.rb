@@ -4,9 +4,7 @@ class Round < ActiveRecord::Base
   belongs_to :deck
   has_many :guesses
 
-  def self.balls
-    @balls = "balls"
-  end
+
 
 
 end
