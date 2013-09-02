@@ -9,10 +9,12 @@
   <form action="/game/card/new" method="post">
   <select name="user[deck]">
   
+
   <% @decks.each do |deck| %>
       <option><%= deck.name %></option>
   <% end %>
 
+  <br>
   <br>
   <input type="submit" value="select">
   </select>
