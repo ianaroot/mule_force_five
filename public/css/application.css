@@ -1,9 +1,25 @@
+body {
+	background-image: url(../background_blue.jpg);
+}
+
 .container {
   margin: 20px auto;
   width: 600px;
-  padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+  padding: 80px 20px 20px 20px;
+  text-align: center;
 }
 th {
   text-align: left;
+}
+
+#muledeer_badge {
+	position: absolute;
+	right:80px;
+	top:30px;
+}
+
+#muledeer_slogan {
+	position: absolute;
+	right:90px;
+	top:216px;
 }
