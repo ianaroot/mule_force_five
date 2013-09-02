@@ -1,22 +1,24 @@
 <div class="container">
 	<h1>Congratulations! You've correctly guessed the answers to all your cards!</h1>
 
+
+<div class="wrapper">
   Here are your stats:
   <table>
     <tr>
-      <td>Number of Guesses:</td>
+      <td><h3>Number of Guesses:</h3></td>
       <td>
         <h3><%= @times_correct + @times_incorrect %></h3>
       </td>
     </tr>
     <tr>
-      <td>Number of Correct Guesses:</td>
+      <td><h3>Number of Correct Guesses:</h3></td>
       <td>
         <h3><%= @times_correct %></h3>
       </td>
     </tr>
     <tr>
-      <td>Number of Incorrect Guesses:</td>
+      <td><h3>Number of Incorrect Guesses:</h3></td>
       <td>
         <h3><%= @times_incorrect %></h3>
       </td>
@@ -29,4 +31,5 @@
 
   <%= erb :logout_button %>
   
+</div>
 </div>
