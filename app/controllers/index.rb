@@ -101,7 +101,8 @@ get '/game/results' do
 end
 
 get '/game/new' do
-
+  @decks = Deck.all
+  @user = User.find(session[:user_id])
   erb :user_home_page
 end
 
